@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import CheckPDF from "./CheckPDF";
+import CheckFile from "./CheckFile";
 import CheckText from "./CheckText";
 import './css/CheckPage.css';
 
@@ -12,7 +12,7 @@ class CheckPage extends React.Component{
 
     checkArea=()=>{
         if(this.state.pdfActive)
-            return <CheckPDF/>
+            return <CheckFile/>
         if(this.state.textActive)
             return <CheckText/>
     }
@@ -41,17 +41,17 @@ class CheckPage extends React.Component{
                                            onClick={ e => {
                                                this.setState({
                                                    pdfActive: true,
-                                                   textActive: false
+                                                   textActive: false,
                                                })
                                            }
-                                        }>PDF</a>
+                                        }>File</a>
                                     </li>
                                     <li className="nav-item">
                                         <a className={this.state.textActive ? "nav-link active" : "nav-link"} href="#"
                                         onClick={e => {
                                             this.setState({
                                                 pdfActive: false,
-                                                textActive: true
+                                                textActive: true,
                                             })
                                         } }
                                         >Text</a>
