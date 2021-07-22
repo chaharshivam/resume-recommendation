@@ -1,9 +1,13 @@
 import React from "react";
 import axios from "axios";
+import {Button, Modal} from "react-bootstrap";
+import Loading from "./Loading";
 
 class CheckText extends React.Component{
     state = {
-        inputText: ""
+        inputText: "",
+        serverResult: "",
+        modalDisplay: false
     }
 
     onFormSubmit = (e) => {
@@ -13,13 +17,36 @@ class CheckText extends React.Component{
             fd.append('givenText', this.state.inputText);
         else
             alert("textarea is empty, Please input some text");
+        this.setState({modalDisplay: true})
         axios.post('http://localhost:8080/check', fd)
             .then(res => {
-                console.log(res);
+                this.setState({serverResult : res.data})
             }).catch(e => {
-            console.log(e);
+            this.setState({serverResult : e.message})
         })
     }
+
+    handleModal(){
+        this.setState({serverResult : ""})
+        this.setState({modalDisplay: !this.state.modalDisplay})
+    }
+
+    showResults=()=>{
+        return(
+            <Modal show={this.state.modalDisplay}>
+                <Modal.Header><b>Response from server</b></Modal.Header>
+                <Modal.Body>
+                    {this.state.serverResult === null ? <Loading/> : this.state.serverResult}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={()=>{this.handleModal()}}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        )
+    }
+
     render(){
         return(
             <div className="card-body">
@@ -38,6 +65,7 @@ class CheckText extends React.Component{
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
+                {this.showResults()}
             </div>
         )
     }

@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import pdfImage from "../assets/pdfIcon.jpg";
 import excelImage from "../assets/excelIcon.png";
-import {Button, Modal} from "react-bootstrap"
+import {Button, Modal} from "react-bootstrap";
 import Loading from "./Loading";
 
 class CheckFile extends React.Component {
@@ -39,26 +39,25 @@ class CheckFile extends React.Component {
     }
 
     handleModal(){
+        this.setState({result : []})
         this.setState({modalDisplay: !this.state.modalDisplay})
     }
 
-    checkForResults(){
-        if(this.state.result.length === 0)
-            return <Loading/>
-        else
-            return this.state.result
-    }
 
     showResults=()=>{
             return(
                 <Modal show={this.state.modalDisplay}>
-                    <Modal.Header><b>Classification Result</b></Modal.Header>
+                    <Modal.Header><b>Response from server</b></Modal.Header>
                     <Modal.Body>
-                        {this.checkForResults()}
+                        {console.log(this.state.result)}
+                        {this.state.result.length === 0 ? <Loading/> : this.state.result.map(item=>{
+                            console.log(item)
+                            return <p key={item}>{item}</p>
+                        })}
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={()=>{this.handleModal()}}>
-                            Close Modal
+                            Close
                         </Button>
                     </Modal.Footer>
                 </Modal>

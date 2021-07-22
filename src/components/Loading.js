@@ -9,7 +9,7 @@ const Loading = () =>{
                 </div>
             </div>
             <p>
-                Please wait, while your file is being uploaded and classification results are being calculated
+                Please wait while the server is processing your file
             </p>
         </div>
     )
