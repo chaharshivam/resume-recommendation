@@ -33,7 +33,7 @@ class CheckText extends React.Component{
 
     showResults=()=>{
         return(
-            <Modal show={this.state.modalDisplay}>
+            <Modal show={this.state.modalDisplay} scrollable={true}>
                 <Modal.Header><b>Response from server</b></Modal.Header>
                 <Modal.Body>
                     {this.state.serverResult === null ? <Loading/> : this.state.serverResult}

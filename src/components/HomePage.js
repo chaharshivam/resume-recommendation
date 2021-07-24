@@ -10,7 +10,7 @@ class HomePage extends React.Component{
                 <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
                     <header className="mb-auto">
                         <div>
-                            <h1 className="float-md-start mb-0">Cover</h1>
+                            <h1 className="float-md-start mb-0">Resume</h1>
                             <nav className="nav nav-masthead justify-content-center float-md-end">
                                 <Link to="/" className="nav-link active" aria-current="page" >Home</Link>
                                 <Link to="/features" className="nav-link" >Features</Link>
@@ -30,7 +30,7 @@ class HomePage extends React.Component{
                         </div>
                     </main>
                     <footer className="mt-auto text-white-50">
-                        <p>&#169; 2021 Resume, Developed by Dr. Pradeep Kumar Roy and Shivam</p>
+                        <p>&#169; 2021 Resume, Developed by Dr. Pradeep Kumar Roy and Shivam Chahar</p>
                     </footer>
                 </div>
             </div>
